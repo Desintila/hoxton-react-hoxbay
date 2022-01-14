@@ -12,10 +12,14 @@ function ProductDetail() {
             .then(resp => resp.json())
             .then(item => setItem(item))
     }, [])
-    console.log(item)
 
-    if (item === null) return <h2>Not found</h2>
+    if (item === null) {
+        return <h1>Loading</h1>
+    }
 
+    if (item.id === undefined) {
+        return <h1>Not Found</h1>
+    }
 
     return (
         <main>
@@ -24,7 +28,7 @@ function ProductDetail() {
                     src={item.image}
                     alt={item.title}
                 />
-                <div className="product-detail__side" /*style="border-color: var(--yellow);"*/>
+                <div className="product-detail__side" style={{ "borderColor": '#f4ae01' }}>
                     <h3></h3>
                     <h2>{item.title}</h2>
                     <p>

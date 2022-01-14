@@ -1,35 +1,24 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import Product from "../components/Product"
 
-function ProductsPage() {
-
-    const [items, setItems] = useState([])
+function ProductsPage(props) {
 
     useEffect(() => {
         fetch('http://localhost:3000/products')
             .then(resp => resp.json())
-            .then(items => setItems(items))
+            .then(items => props.setItems(items))
     }, [])
 
-    console.log(items)
 
     return (
+
         <main>
             <section className="products-container main-wrapper">
                 <ul className="products-container__list">
                     {
-                        items.map(item => (
-                            <li key={item.id}>
-                                <Link to={`/products/${item.id}`}
-                                ><article className="product-item">
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                        />
-                                        <h3>{item.title}</h3>
-                                    </article></Link
-                                >
-                            </li>
+
+                        props.items.map(item => (
+                            <Product item={item} />
                         ))
                     }
 

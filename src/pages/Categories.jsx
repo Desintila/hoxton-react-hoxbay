@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 function Categories() {
-
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
