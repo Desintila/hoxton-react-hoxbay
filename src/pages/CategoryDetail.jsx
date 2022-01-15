@@ -15,7 +15,7 @@ function CategoryDetail(props) {
         return <h1>Loading</h1>
     }
     if (selected.id === undefined) {
-        return <h1>Not Found</h1>
+        return <h1 style={{ color: 'red', display: 'grid', placeItems: 'center', height: '100vh' }}>Not Found</h1>
     }
 
 

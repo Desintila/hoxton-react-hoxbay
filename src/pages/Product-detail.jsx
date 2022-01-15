@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
-function ProductDetail() {
+
+function ProductDetail(props) {
 
     const [item, setItem] = useState(null)
     const product = useParams()
@@ -18,7 +19,7 @@ function ProductDetail() {
     }
 
     if (item.id === undefined) {
-        return <h1>Not Found</h1>
+        return <h1 style={{ color: 'red', display: 'grid', placeItems: 'center', height: '100vh' }}>Not Found</h1>
     }
 
     return (
@@ -35,8 +36,7 @@ function ProductDetail() {
                         {item.description}
                     </p>
                     <p>£{item.price}</p>
-
-                    <button>Add to basket</button>
+                    <Link to={`/basket`}><button onClick={() => props.addToCart(item)}>Add to basket</button></Link>
                 </div>
             </section>
 
