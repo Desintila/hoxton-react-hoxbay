@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 const randColour = () =>
   ["green", "red", "blue", "yellow"][Math.floor(Math.random() * 4)];
 
-function Header() {
+function Header({ setSearch }) {
+
   return (
     <header
       className="header"
@@ -31,6 +32,7 @@ function Header() {
         </ul>
 
       </nav>
+      <input className="search-input" type={'search'} placeholder="Search an item" onChange={event => setSearch(event.target.value)} />
     </header>
   );
 }

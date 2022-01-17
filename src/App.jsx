@@ -11,14 +11,15 @@ import NotFound from './pages/NotFound'
 function App() {
 
   const [items, setItems] = useState([])
+  const [search, setSearch] = useState('')
 
   return (
     <>
-      <Header />
+      <Header setSearch={setSearch} />
       <main>
         <Routes>
           <Route index element={<Navigate replace to='/products' />} />
-          <Route path='/products' element={<ProductsPage items={items} setItems={setItems} />} />
+          <Route path='/products' element={<ProductsPage items={items} setItems={setItems} search={search} />} />
           <Route path='/categories' element={<Categories />} />
           <Route path='/basket' element={<Basket />} />
           <Route path='/products/:id' element={<ProductDetail />} />

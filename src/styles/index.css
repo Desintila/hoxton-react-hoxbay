@@ -67,7 +67,7 @@ img {
 .header {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr 1fr;
   align-items: center;
   height: 100px;
 }
@@ -103,6 +103,12 @@ img {
   text-decoration: underline;
 }
 
+.search-input{
+ margin-right: 1rem;
+  border: none;
+  padding: 5px;
+  border-radius: 20px;
+}
 /* Products Container */
 
 .products-container {

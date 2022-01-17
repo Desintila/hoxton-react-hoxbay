@@ -14,7 +14,6 @@ function ProductDetail() {
             .then(item => setItem(item))
     }, [])
 
-
     function addToCart() {
         fetch('http://localhost:3000/cart', {
             method: 'POST',

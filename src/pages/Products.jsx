@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import Product from "../components/Product"
 
-function ProductsPage({ items, setItems }) {
+function ProductsPage({ items, setItems, search }) {
 
     useEffect(() => {
         fetch('http://localhost:3000/products')
@@ -10,6 +10,11 @@ function ProductsPage({ items, setItems }) {
     }, [])
 
 
+    let filteredItems = items
+
+    filteredItems = filteredItems.filter(function (item) {
+        return item.title.toLowerCase().includes(search.toLowerCase())
+    })
     return (
 
         <main>
@@ -17,7 +22,7 @@ function ProductsPage({ items, setItems }) {
                 <ul className="products-container__list">
                     {
 
-                        items.map(item => (
+                        filteredItems.map(item => (
                             <Product key={item.id} item={item} />
                         ))
                     }
