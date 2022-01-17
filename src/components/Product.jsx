@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom"
 
-function Product(props) {
+function Product({ item }) {
     return (
-        <li key={props.item.id}>
-            <Link to={`/products/${props.item.id}`}
+        <li key={item.id}>
+            <Link to={`/products/${item.id}`}
             ><article className="product-item">
                     <img
-                        src={props.item.image}
-                        alt={props.item.title}
+                        src={item.image}
+                        alt={item.title}
                     />
-                    <h3>{props.item.title}</h3>
+                    <h3>{item.title}</h3>
                 </article></Link
             >
         </li>

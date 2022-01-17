@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 import Product from "../components/Product"
 
-function ProductsPage(props) {
+function ProductsPage({ items, setItems }) {
 
     useEffect(() => {
         fetch('http://localhost:3000/products')
             .then(resp => resp.json())
-            .then(items => props.setItems(items))
+            .then(items => setItems(items))
     }, [])
 
 
@@ -17,8 +17,8 @@ function ProductsPage(props) {
                 <ul className="products-container__list">
                     {
 
-                        props.items.map(item => (
-                            <Product item={item} />
+                        items.map(item => (
+                            <Product key={item.id} item={item} />
                         ))
                     }
 

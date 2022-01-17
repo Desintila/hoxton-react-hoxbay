@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 
-function ProductDetail(props) {
+function ProductDetail() {
 
     const [item, setItem] = useState(null)
     const product = useParams()
@@ -14,6 +14,19 @@ function ProductDetail(props) {
             .then(item => setItem(item))
     }, [])
 
+
+    function addToCart() {
+        fetch('http://localhost:3000/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ...item, quantity: 1
+
+            })
+        }).then(resp => resp.json())
+    }
     if (item === null) {
         return <h1>Loading</h1>
     }
@@ -36,7 +49,7 @@ function ProductDetail(props) {
                         {item.description}
                     </p>
                     <p>£{item.price}</p>
-                    <Link to={`/basket`}><button onClick={() => props.addToCart(item)}>Add to basket</button></Link>
+                    <Link to={`/basket`}><button onClick={() => addToCart()}>Add to basket</button></Link>
                 </div>
             </section>
 

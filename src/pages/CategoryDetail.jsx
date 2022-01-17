@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Product from "../components/Product"
-function CategoryDetail(props) {
+function CategoryDetail({ items }) {
     const param = useParams()
     const [selected, setSelected] = useState(null)
 
@@ -20,7 +20,7 @@ function CategoryDetail(props) {
 
 
     function displayProducts() {
-        let products = props.items
+        let products = items
         if (selected !== null)
             products = products.filter(item => {
                 return item.categoryId === selected.id
@@ -35,7 +35,7 @@ function CategoryDetail(props) {
                 <ul className="products-container__list">
                     {
                         displayProducts().map(item => (
-                            <Product item={item} />
+                            <Product key={item.id} item={item} />
                         ))
                     }
 
